@@ -1,58 +1,106 @@
-# Data Science Example Repository
+# Data Science Example
 
-This repository is a lightweight example for showing how a data science project can be organized in GitHub. It is intentionally simple, intentionally fake, and meant to be used as a demo artifact rather than a real production project.
+This repository is a small practice project for learning how a data science
+workflow fits together. You will work with synthetic customer and order data,
+explore it in a notebook, turn repeated analysis into Python functions, and
+run tests to check that the results still make sense.
 
-## What this repo is for
+The project is intentionally small, so you can focus on the workflow instead
+of spending time cleaning a large or unfamiliar dataset.
 
-Use this repo when you want to demonstrate to data science folks or technical audiences:
+## What you will practice
 
-- how a project is laid out in a GitHub repository
-- where notebooks, scripts, and data usually live
-- how to organize sample data and documentation
-- how CI checks and test files fit into a standard workflow
-- how a simple analysis can be shown without needing a large real-world dataset
+- Loading related CSV files with pandas
+- Joining customer and order data
+- Exploring data in a Jupyter notebook
+- Creating customer-level summary features
+- Grouping customers into simple revenue bands
+- Writing reusable Python code outside the notebook
+- Using tests to check data and transformation results
 
-This is not meant to be a serious data product or a validated analytics project. It is a teaching and presentation sample.
+The data is made up for practice. It is not a real customer dataset and should
+not be used for business decisions or model training.
 
 ## Repository structure
 
 ```text
-project/
+.
 ├── README.md
 ├── data/
-│   ├── README.md
-│   └── sample/
+│   ├── README.md              # Notes about the sample data
+│   └── sample/                # Synthetic customer and order CSV files
 ├── notebooks/
+│   └── 01_exploration.ipynb   # Guided first look at the data
 ├── src/
+│   ├── data_loader.py         # Loads and joins the CSV files
+│   ├── feature_engineering.py # Builds customer summary features
+│   └── modeling.py            # Produces a small scorecard
 ├── tests/
+│   └── test_transformations.py
 ├── requirements.txt
-├── .gitignore
 ├── pytest.ini
-└── .github/workflows/
+└── .github/workflows/ci.yml   # Runs the tests on GitHub
 ```
 
-## How to use it in a demo
+## Start here
 
-1. Explain that this is a sample repository structure, not a production system.
-2. Point to the data folder to show how sample datasets are documented.
-3. Open the notebook to show an exploratory workflow.
-4. Mention the `src/` scripts as reusable analysis logic.
-5. Show the GitHub Actions workflow as a simple automation example.
-6. Mention the tests as lightweight validation examples.
+1. Read `data/README.md` to understand the columns and limitations of the
+   sample data.
+2. Open `notebooks/01_exploration.ipynb` and run the cells. Look at the
+   customer and order tables, then inspect the merged data.
+3. Read `src/data_loader.py` to see how the tables are loaded and joined.
+4. Read `src/feature_engineering.py` to see how order-level rows become one
+   summary row per customer.
+5. Run the tests and then try changing the analysis yourself.
 
-## Quickstart
+## Set up the project
+
+Create a virtual environment so the project packages stay separate from your
+other Python projects:
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
+```
+
+On Windows, activate the environment with:
+
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+## Run the examples
+
+```bash
 python src/data_loader.py
 python src/feature_engineering.py
+python src/modeling.py
 pytest -q
 ```
 
-## Notes
+To open the notebook:
 
-- The data are synthetic examples only.
-- The project is intentionally small and easy to explain.
-- The goal is to illustrate repository organization and GitHub-friendly workflows for data science presentations.
+```bash
+jupyter notebook
+```
+
+Then open `notebooks/01_exploration.ipynb` in the browser window.
+
+## Ideas for practice
+
+- Add a chart showing revenue by region or product category.
+- Compare repeat and non-repeat purchases.
+- Change the revenue-band thresholds and explain the effect.
+- Add a new customer metric, such as days since signup.
+- Write a test for the new metric.
+- Replace the notebook's data-loading code with
+  `src.data_loader.load_demo_data`.
+
+## Important limitations
+
+- The CSV files contain synthetic data created only for this project.
+- The analysis is intentionally simple and is not a complete machine learning
+  project.
+- The results are examples for learning, not evidence about real customers or
+  markets.
