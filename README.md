@@ -1,25 +1,25 @@
 # Data Science Example
 
-This repository is a small practice project for learning how a data science
-workflow fits together. You will work with synthetic customer and order data,
-explore it in a notebook, turn repeated analysis into Python functions, and
-run tests to check that the results still make sense.
+This repository is an explorable example of how a data science project can be
+organized and shared on GitHub. It includes sample data, a notebook, reusable
+Python code, tests, project documentation, and a GitHub Actions workflow.
 
-The project is intentionally small, so you can focus on the workflow instead
-of spending time cleaning a large or unfamiliar dataset.
+The analysis is intentionally simple. The main subject is the repository:
+where different parts of a data science project live, how they connect, and
+how GitHub can support the work.
 
-## What you will practice
+## What to explore
 
-- Loading related CSV files with pandas
-- Joining customer and order data
-- Exploring data in a Jupyter notebook
-- Creating customer-level summary features
-- Grouping customers into simple revenue bands
-- Writing reusable Python code outside the notebook
-- Using tests to check data and transformation results
+- How sample data and its documentation are stored in `data/`
+- How exploratory work is shown in `notebooks/`
+- How reusable analysis code is separated into `src/`
+- How tests in `tests/` check data and transformations
+- How dependencies are listed in `requirements.txt`
+- How GitHub Actions runs the tests automatically
+- How the README helps someone else understand and use the project
 
-The data is made up for practice. It is not a real customer dataset and should
-not be used for business decisions or model training.
+The data is synthetic. It is included to make the repository structure
+concrete, not to teach customer analytics or support real conclusions.
 
 ## Repository structure
 
@@ -42,16 +42,18 @@ not be used for business decisions or model training.
 └── .github/workflows/ci.yml   # Runs the tests on GitHub
 ```
 
-## Start here
+## Explore the repository
 
-1. Read `data/README.md` to understand the columns and limitations of the
-   sample data.
-2. Open `notebooks/01_exploration.ipynb` and run the cells. Look at the
-   customer and order tables, then inspect the merged data.
-3. Read `src/data_loader.py` to see how the tables are loaded and joined.
-4. Read `src/feature_engineering.py` to see how order-level rows become one
-   summary row per customer.
-5. Run the tests and then try changing the analysis yourself.
+1. Browse the repository on GitHub and identify the role of each top-level
+   folder.
+2. Read `data/README.md` and inspect the sample CSV files.
+3. Open `notebooks/01_exploration.ipynb` to see how an analysis can be
+   documented alongside its output.
+4. Compare the notebook with the reusable code in `src/`.
+5. Open `tests/test_transformations.py` and `.github/workflows/ci.yml` to see
+   how checks are written and run.
+6. Use the repository history, branches, pull requests, and Actions checks to
+   explore how GitHub supports collaboration around the project.
 
 ## Set up the project
 
@@ -70,7 +72,7 @@ On Windows, activate the environment with:
 .venv\Scripts\Activate.ps1
 ```
 
-## Run the examples
+## Run the project locally
 
 ```bash
 python src/data_loader.py
@@ -87,20 +89,19 @@ jupyter notebook
 
 Then open `notebooks/01_exploration.ipynb` in the browser window.
 
-## Ideas for practice
+## Ideas for exploring GitHub for data science
 
-- Add a chart showing revenue by region or product category.
-- Compare repeat and non-repeat purchases.
-- Change the revenue-band thresholds and explain the effect.
-- Add a new customer metric, such as days since signup.
-- Write a test for the new metric.
-- Replace the notebook's data-loading code with
-  `src.data_loader.load_demo_data`.
+- Create a branch and update the notebook or sample data documentation.
+- Open a pull request and review the changed files.
+- Add a test for a change and confirm that the Actions workflow runs it.
+- Use an issue to describe a possible analysis or repository improvement.
+- Compare notebook-only code with code that can be reused from `src/`.
+- Inspect the commit history to see how project changes are recorded.
 
 ## Important limitations
 
 - The CSV files contain synthetic data created only for this project.
-- The analysis is intentionally simple and is not a complete machine learning
-  project.
-- The results are examples for learning, not evidence about real customers or
-  markets.
+- The analysis is intentionally simple and is not a complete data science or
+  machine learning project.
+- The results are examples for demonstrating repository organization, not
+  evidence about real customers or markets.
